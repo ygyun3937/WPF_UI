@@ -1,9 +1,16 @@
 ﻿<Window x:Class="WPF_UI.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:uc="clr-namespace:WPF_UI.UserControls"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        Height="760" Width="1280" ResizeMode="NoResize" AllowsTransparency="True">
+        Height="760" Width="1280" ResizeMode="NoResize" AllowsTransparency="True"
+        WindowStyle="None" WindowStartupLocation="CenterScreen" Background="Transparent">
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="boolToVis"/>
+    </Window.Resources>
+    
     <Border CornerRadius="25" Background="#151f2d" MouseDown="Border_MouseDown">
         <Grid >
             <Grid.ColumnDefinitions>
@@ -25,17 +32,44 @@
                             <Ellipse Width="8" Height="8" Fill="#eb1700"/>
                             <Ellipse Width="8" Height="8" Fill="#ffaf01" Margin="7 0"/>
                             <Ellipse Width="8" Height="8" Fill="#009d00"/>
-                            
                         </StackPanel>
-                        <Ellipse>
-                            
-                        </Ellipse>
-                            
+
+                        <!--Menu Buttons-->
+                        <uc:MenuButton Icon="HomeVariant" IsActive="True" />
+                        <uc:MenuButton Icon="Finance"/>
+                        <uc:MenuButton Icon="CommentAccountOutline"/>
+                        <uc:MenuButton Icon="AccountSearchOutline"/>
+                        <uc:MenuButton Icon="BookSyncOutline"/>
+                        <uc:MenuButton Icon="AlertCircleCheckOutline"/>
+                        <uc:MenuButton Icon="CogOutline"/>
                     </StackPanel>
-                </Grid>
-                    
-            </Border>
+
+                    <uc:MenuButton Icon="Power" VerticalAlignment="Bottom" Margin="0 0 0 15"/> 
+                </Grid>                    
+            </Border>       
             
+            <!--Top Menu-->
+            <Grid Grid.Column="1" Margin="30">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>                    
+                </Grid.ColumnDefinitions>
+                
+                <!--Search Textbox-->
+                <Grid>
+                    <TextBlock Margin="40 0 15 0" VerticalAlignment="Center" Foreground="#9ea4ad" Panel.ZIndex="1"
+                               IsHitTestVisible="False" Text="Serach here ..."
+                               Visibility="{Binding ElementName=textBox,Path=Text.IsEmpty,Converter={StaticResource boolToVis}}"/>
+
+                    <TextBox x:Name="textBox" Style="{StaticResource searchTextBox}"/>
+
+                    <Icon:PackIconMaterial Kind="Magnify" Width="15" Height="15" Foreground="#9ea4ad" Margin="15 0 0 0" HorizontalAlignment="Left"/>
+
+
+
+                </Grid>
+                
+            </Grid>
         </Grid>
     </Border>
 </Window>
