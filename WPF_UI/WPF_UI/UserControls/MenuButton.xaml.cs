@@ -17,13 +17,23 @@ namespace WPF_UI.UserControls
 
         public PackIconMaterialKind Icon
         {
-            get { return (PackIconMaterialKind)GetValue(IsActiveProperty); }
+            get { return (PackIconMaterialKind)GetValue(IconProperty); }
+            set { SetValue(IconProperty, value); }
+        }
+
+
+        public static readonly DependencyProperty IconProperty =
+            DependencyProperty.Register("Icon", typeof(PackIconMaterialKind), typeof(MenuButton));
+
+        public bool IsActive
+        {
+            get { return (bool)GetValue(IsActiveProperty); }
             set { SetValue(IsActiveProperty, value); }
         }
 
 
         public static readonly DependencyProperty IsActiveProperty =
-            DependencyProperty.Register("", typeof(PackIconMaterialKind), typeof(MenuButton));
+            DependencyProperty.Register("IsActive", typeof(bool), typeof(MenuButton));
 
 
 
