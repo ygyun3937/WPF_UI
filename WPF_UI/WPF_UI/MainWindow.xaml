@@ -10,7 +10,7 @@
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="boolToVis"/>
     </Window.Resources>
-    
+
     <Border CornerRadius="25" Background="#151f2d" MouseDown="Border_MouseDown">
         <Grid >
             <Grid.ColumnDefinitions>
@@ -20,9 +20,9 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>                
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            
+
             <!--Left Menu-->
             <Border Grid.RowSpan="3" Background="#1e2e44" CornerRadius="25 0 0 25">
                 <Grid >
@@ -44,28 +44,32 @@
                         <uc:MenuButton Icon="CogOutline"/>
                     </StackPanel>
 
-                    <uc:MenuButton Icon="Power" VerticalAlignment="Bottom" Margin="0 0 0 15"/> 
-                </Grid>                    
-            </Border>       
-            
+                    <uc:MenuButton Icon="Power" VerticalAlignment="Bottom" Margin="0 0 0 15"/>
+                </Grid>
+            </Border>
+
             <!--Top Menu-->
             <Grid Grid.Column="1" Margin="30">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="auto"/>                    
+                    <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
-                
+
                 <!--Search Textbox-->
                 <Grid>
-                    <TextBlock Margin="40 0 15 0" VerticalAlignment="Center" Foreground="#9ea4ad" Panel.ZIndex="1"
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="109*"/>
+                        <ColumnDefinition Width="839*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Margin="40,15,15,15" VerticalAlignment="Center" Foreground="#9ea4ad" Panel.ZIndex="1"
                                IsHitTestVisible="False" Text="Serach here ..."
-                               Visibility="{Binding ElementName=textBox,Path=Text.IsEmpty,Converter={StaticResource boolToVis}}"/>
+                               Visibility="{Binding ElementName=textBox,Path=Text.IsEmpty,Converter={StaticResource boolToVis}}" Grid.ColumnSpan="2"/>
 
-                    <TextBox x:Name="textBox" Style="{StaticResource searchTextBox}"/>
+                    <TextBox x:Name="textBox" Style="{StaticResource searchTextBox}" Grid.ColumnSpan="2"/>
 
-                    <Icon:PackIconMaterial Kind="Magnify" Width="15" Height="15" Foreground="#9ea4ad" Margin="15 0 0 0" HorizontalAlignment="Left"/>
+                    <Icon:PackIconMaterial Kind="Magnify" Width="15" Height="15" Foreground="#9ea4ad" Margin="15 15 0 0" HorizontalAlignment="Left"/>
                 </Grid>
-                
+
                 <!--Buttons-->
                 <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="20 0 0 0">
                     <Button Style="{StaticResource topMenuButton }">
@@ -78,10 +82,10 @@
                         <Icon:PackIconMaterial Kind="Account" Style="{StaticResource topMenuButtonIcon}"/>
                     </Button>
                 </StackPanel>
-                
+
             </Grid>
-            
-            
+
+
             <!--Middle Top Section-->
             <Grid Grid.Row="1" Grid.Column="1" Margin="20 0">
                 <Grid.ColumnDefinitions>
@@ -89,7 +93,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                
+
                 <!--Info Cards Left-->
                 <StackPanel Margin="10 0">
                     <uc:InfoCard Number="18" Title="Averge Days To Hire" IsTechnical="True" IsActive="True"/>
@@ -102,23 +106,23 @@
                     <uc:InfoCard Number="27" Title="Averge Days To Hire" IsTechnical="False" />
                     <uc:InfoCard Number="99" Title="Offer Acceptance Rate" IsTechnical="False" />
                 </StackPanel>
-                
+
                 <!--Cost Section-->
                 <Border Grid.Column="2" Style="{StaticResource mainBorder}" Margin="10 0 10 21.5">
                     <Grid>
                         <!--TItle-->
                         <TextBlock Text="Recruitment Cost YTD" Style="{StaticResource titleText}"/>
-                        
+
                         <!--Filter Button-->
-                        <Button Style="{StaticResource titleButton}" Margin="0 -3 0 0">
-                            <Icon:PackIconMaterial Kind="Tune" Style="{StaticResource topMenuButtonIcon}"/>
+                        <Button Style="{StaticResource titleButton}" Margin="0 -3 0 0" VerticalAlignment="Top">
+                            <Icon:PackIconMaterial Kind="Tune" Style="{StaticResource topMenuButtonIcon}" />
                         </Button>
-                        
+
                         <!--Legends-->
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 45 0 0">
                             <Border Width="12" Height="12" Background="#7166f9" CornerRadius="3"/>
                             <TextBlock Text="Marketing" VerticalAlignment="Center" Margin="7 0 20 0" Foreground="#d4d6d9"/>
-                            
+
                             <Border Width="12" Height="12" Background="#101a28" CornerRadius="3"/>
                             <TextBlock Text="Cases Sales" VerticalAlignment="Center" Margin="7 0 20 0" Foreground="#d4d6d9"/>
                         </StackPanel>
@@ -151,23 +155,23 @@
                                 <Ivc:StackedColumnSeries Fill="#101a28" MaxColumnWidth="15" Values="6,5,6,4,6,6,7,6"/>
                             </Ivc:CartesianChart.Series>
                         </Ivc:CartesianChart>
-                    </Grid>    
+                    </Grid>
                 </Border>
             </Grid>
-            
+
             <!--Middle Bottom Section-->
             <Grid Grid.Row="2" Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="450"/>                    
+                    <ColumnDefinition Width="450"/>
                 </Grid.ColumnDefinitions>
-                
+
                 <!--Hire Section-->
                 <Border Style="{StaticResource mainBorder}" Margin="30 0 20 30">
                     <Grid>
                         <!--Title-->
                         <TextBlock Text="Top Hiring Sources" Style="{StaticResource titleText}"/>
-                        
+
                         <!--Filter Button-->
                         <Button Style="{StaticResource titleButton}" VerticalAlignment="Top" >
                             <Icon:PackIconMaterial Kind="Tune" Style="{StaticResource topMenuButtonIcon}"/>
@@ -178,7 +182,7 @@
                             <Border Width="12" Height="12" Background="#7166f9" CornerRadius="3"/>
                             <TextBlock Text="Marketing" VerticalAlignment="Center" Margin="7 0 20 0" Foreground="#d4d6d9"/>
                         </StackPanel>
-                        
+
                         <!--Hire Chart-->
                         <Ivc:CartesianChart LegendLocation="None" Margin="0 40 0 0">
 
@@ -223,20 +227,20 @@
                         <TextBlock Text="Top Countries" Style="{StaticResource titleText}"/>
 
                         <!--Filter Button-->
-                        <Button Style="{StaticResource titleButton}" Margin="0 -3 0 0" >
+                        <Button Style="{StaticResource titleButton}" Margin="0 -3 0 0" VerticalAlignment="Top" >
                             <Icon:PackIconMaterial Kind="Tune" Style="{StaticResource topMenuButtonIcon}"/>
                         </Button>
-                        
+
                         <!--Country List View-->
                         <ListView Margin="0 50 0 0" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">
-                            
+
                         </ListView>
-                        
-                    </Grid>                   
-                </Border>   
+
+                    </Grid>
+                </Border>
             </Grid>
             <!--23:39-->
-            
+
         </Grid>
     </Border>
 </Window>
