@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:uc="clr-namespace:WPF_UI.UserControls"
         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Ivc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         Height="760" Width="1280" ResizeMode="NoResize" AllowsTransparency="True"
         WindowStyle="None" WindowStartupLocation="CenterScreen" Background="Transparent">
 
@@ -64,11 +64,86 @@
                     <TextBox x:Name="textBox" Style="{StaticResource searchTextBox}"/>
 
                     <Icon:PackIconMaterial Kind="Magnify" Width="15" Height="15" Foreground="#9ea4ad" Margin="15 0 0 0" HorizontalAlignment="Left"/>
-
-
-
                 </Grid>
                 
+                <!--Buttons-->
+                <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="20 0 0 0">
+                    <Button Style="{StaticResource topMenuButton }">
+                        <Icon:PackIconMaterial Kind="Bell" Style="{StaticResource topMenuButtonIcon}"/>
+                    </Button>
+                    <Button Style="{StaticResource topMenuButton }">
+                        <Icon:PackIconMaterial Kind="Bookmark" Style="{StaticResource topMenuButtonIcon}"/>
+                    </Button>
+                    <Button Style="{StaticResource topMenuButton }" Background="#1e2e44">
+                        <Icon:PackIconMaterial Kind="Account" Style="{StaticResource topMenuButtonIcon}"/>
+                    </Button>
+                </StackPanel>
+                
+            </Grid>
+            
+            
+            <!--Middle Top Section-->
+            <Grid Grid.Row="1" Grid.Column="1" Margin="20 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                
+                <!--Info Cards Left-->
+                <StackPanel Margin="10 0">
+                    <uc:InfoCard Number="18" Title="Averge Days To Hire" IsTechnical="True" IsActive="True"/>
+                    <uc:InfoCard Number="54" Title="Averge Days To Hire" IsTechnical="True" IsActive="True"/>
+                    <uc:InfoCard Number="98" Title="Averge Days To Hire" IsTechnical="True" IsActive="True"/>
+                </StackPanel>
+                <!--Info Cards Right-->
+                <StackPanel Margin="10 0" Grid.Column="1">
+                    <uc:InfoCard Number="23" Title="Averge Days To Hire" IsTechnical="False" />
+                    <uc:InfoCard Number="27" Title="Averge Days To Hire" IsTechnical="False" />
+                    <uc:InfoCard Number="99" Title="Offer Acceptance Rate" IsTechnical="False" />
+                </StackPanel>
+                
+                <!--Cost Section-->
+                <Border Grid.Column="2" Style="{StaticResource mainBorder}" Margin="10 0 10 21.5">
+                    <Grid>
+                        <!--TItle-->
+                        <TextBlock Text="Recruitment Cost YTD" Style="{StaticResource titleText}"/>
+                        
+                        <!--Filter Button-->
+                        <Button Style="{StaticResource titleButton}" Margin="0 -3 0 0">
+                            <Icon:PackIconMaterial Kind="Tune" Style="{StaticResource topMenuButtonIcon}"/>
+                        </Button>
+                        
+                        <!--Legends-->
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 45 0 0">
+                            <Border Width="12" Height="12" Background="#7166f9" CornerRadius="3"/>
+                            <TextBlock Text="Marketing" VerticalAlignment="Center" Margin="7 0 20 0" Foreground="#d4d6d9"/>
+                            
+                            <Border Width="12" Height="12" Background="#101a28" CornerRadius="3"/>
+                            <TextBlock Text="Cases Sales" VerticalAlignment="Center" Margin="7 0 20 0" Foreground="#d4d6d9"/>
+                        </StackPanel>
+
+                        <!--Cost Chart-->
+                        <Ivc:CartesianChart LegendLocation="None" Margin="0 40 0 0">
+
+                            <Ivc:CartesianChart.DataTooltip>
+                                <Ivc:DefaultTooltip Background="#24336a" Foreground="#d5e2ff"/>
+                            </Ivc:CartesianChart.DataTooltip>
+
+                            <Ivc:CartesianChart.AxisX>
+                                <Ivc:Axis Foreground="#bcc0c6" ShowLabels="True" Labels="Jan,Feb,Mar,Apr,May,Jun,Jul,Aug">
+                                    <Ivc:Axis.Separator>
+                                        <Ivc:Separator StrokeThickness="0" Step="1"/>
+                                    </Ivc:Axis.Separator>
+                                </Ivc:Axis>
+                            </Ivc:CartesianChart.AxisX>
+
+
+
+
+                        </Ivc:CartesianChart>
+                    </Grid>         
+                </Border>
             </Grid>
         </Grid>
     </Border>
