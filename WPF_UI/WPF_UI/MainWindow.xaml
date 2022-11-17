@@ -49,7 +49,7 @@
             </Border>
 
             <!--Top Menu-->
-            <Grid Grid.Column="1" Margin="30">
+            <Grid Grid.Column="1" Margin="40">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="auto"/>
