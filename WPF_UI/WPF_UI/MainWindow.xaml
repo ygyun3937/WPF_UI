@@ -35,7 +35,7 @@
                         </StackPanel>
 
                         <!--Menu Buttons-->
-                        <uc:MenuButton Icon="HomeVariant" IsActive="True" />
+                        <uc:MenuButton Icon="HomeVariant" IsActive="True" HorizontalAlignment="Right" Width="100" />
                         <uc:MenuButton Icon="Finance"/>
                         <uc:MenuButton Icon="CommentAccountOutline"/>
                         <uc:MenuButton Icon="AccountSearchOutline"/>
@@ -191,7 +191,7 @@
                             </Ivc:CartesianChart.DataTooltip>
 
                             <Ivc:CartesianChart.AxisX>
-                                <Ivc:Axis Foreground="#bcc0c6" ShowLabels="True" Labels="Direct,,,,We War...,,,,Linkedin,,,,Hired,,,,WorkIn...,,,,Instagram,,,,Referral...">
+                                <Ivc:Axis Foreground="#bcc0c6" ShowLabels="True" Labels="Direct, , , ,We War..., , , ,Linkedin, , , ,Hired, , , ,WorkIn..., , , ,Instagram, , , ,Referral...">
                                     <Ivc:Axis.Separator>
                                         <Ivc:Separator StrokeThickness="0" Step="4"/>
                                     </Ivc:Axis.Separator>
@@ -233,7 +233,11 @@
 
                         <!--Country List View-->
                         <ListView Margin="0 50 0 0" Background="Transparent" BorderThickness="0" ScrollViewer.HorizontalScrollBarVisibility="Hidden" ScrollViewer.VerticalScrollBarVisibility="Hidden">
-
+                            <uc:Country CountryName="AD" Flag="/Images/AD.png" Price="$27,544.39" IsLevelUp="True"/>
+                            <uc:Country CountryName="AE" Flag="/Images/AE.png" Price="$19,584.23" IsLevelUp="True"/>
+                            <uc:Country CountryName="AF" Flag="/Images/AF.png" Price="$18,650.69" IsLevelUp="True"/>
+                            <uc:Country CountryName="AG" Flag="/Images/AG.png" Price="$17,965.39" IsLevelUp="False"/>
+                            <uc:Country CountryName="KR" Flag="/Images/KR.png" Price="$14,509.71" IsLevelUp="True"/>
                         </ListView>
 
                     </Grid>
