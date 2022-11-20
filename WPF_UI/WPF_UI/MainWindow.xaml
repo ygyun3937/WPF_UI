@@ -14,7 +14,7 @@
     <Border CornerRadius="25" Background="#151f2d" MouseDown="Border_MouseDown">
         <Grid >
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="120"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
