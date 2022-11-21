@@ -6,7 +6,7 @@ namespace WPF_UI.Models
 {
     public class ViewModelMySql
     {     
-        public string Name
+        public string NAME
         {
             get;
             set;
