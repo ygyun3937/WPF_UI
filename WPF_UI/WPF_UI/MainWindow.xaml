@@ -4,13 +4,14 @@
         xmlns:uc="clr-namespace:WPF_UI.UserControls"
         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:Ivc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        xmlns:ViewModel="clr-namespace:WPF_UI.ViewModel"
         Height="760" Width="1280" ResizeMode="NoResize" AllowsTransparency="True"
         WindowStyle="None" WindowStartupLocation="CenterScreen" Background="Transparent">
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="boolToVis"/>
     </Window.Resources>
-
+    
     <Border CornerRadius="25" Background="#151f2d" MouseDown="Border_MouseDown">
         <Grid >
             <Grid.ColumnDefinitions>
