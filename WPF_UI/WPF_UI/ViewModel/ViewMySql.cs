@@ -2,6 +2,10 @@
 using System.ComponentModel;
 using WPF_UI.Models;
 using System.Collections.ObjectModel;
+using WPF_UI.Models;
+using System.Windows.Input;
+using System;
+using System.Data;
 
 namespace WPF_UI.ViewModel
 {
@@ -59,7 +63,56 @@ namespace WPF_UI.ViewModel
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
+        /// <summary>
+        /// Connect Command 선언
+        /// </summary>
+        /// ICommand : using System.Windows.Input;
+        private ICommand connectCommand;
+        public ICommand ConnectCommand
+        {
+            get
+            {
+                return (this.connectCommand) ?? (this.connectCommand = new DelegateCommand(Connect));
+            }
+        }
+
+        private ICommand selectCommand;
+        public ICommand SelectCommand
+        {
+            get
+            {
+                return (this.selectCommand)??(this.selectCommand = new DelegateCommand(DataSearch))
+            }
+        }
+
+        private void DataSearch()
+        {
+            DataSet ds = new DataSet();
+
+            string query = @"";
+
+            SQLDBManager.Instance.ExecuteDsQuery(ds, query);
+
+        }
 
 
+        /// <summary>
+        /// DB Connect
+        /// </summary>
+        private void Connect()
+        {
+            //Connect to DB
+            if(SQLDBManager.Instance.GetConnection() == false)
+            {
+                string msg = $"Failed to Connect to Database";
+                MessageBox.Show(msg, "Error");
+                return;
+            }
+            else
+            {
+                string msg = $"Success to Connect to Database";
+                MessageBox.Show(msg, "Inform");
+            }
+        }
     }
 }

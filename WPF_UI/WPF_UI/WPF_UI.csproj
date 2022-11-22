@@ -81,6 +81,7 @@
       <DependentUpon>MenuButton.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\DelegateCommand.cs" />
+    <Compile Include="ViewModel\SQLDBManager.cs" />
     <Compile Include="ViewModel\ViewMySql.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
