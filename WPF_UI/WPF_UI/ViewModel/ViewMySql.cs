@@ -81,7 +81,7 @@ namespace WPF_UI.ViewModel
         {
             get
             {
-                return (this.selectCommand)??(this.selectCommand = new DelegateCommand(DataSearch))
+                return (this.selectCommand) ?? (this.selectCommand = new DelegateCommand(DataSearch));
             }
         }
 
