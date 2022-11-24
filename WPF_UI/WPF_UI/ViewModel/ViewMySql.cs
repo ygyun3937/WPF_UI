@@ -40,14 +40,14 @@ namespace WPF_UI.ViewModel
                 OnPropertyChanged("AGE");
             }
         }
-        ObservableCollection<ViewMySql> _SameViewMySqls = null;
-        public ObservableCollection<ViewMySql> SampleViewMySqls
+        ObservableCollection<ViewModelMySql> _SameViewMySqls = null;
+        public ObservableCollection<ViewModelMySql> SampleViewMySqls
         {
             get
             {
                 if(_SameViewMySqls == null)
                 {
-                    _SameViewMySqls = new ObservableCollection<ViewMySql>();
+                    _SameViewMySqls = new ObservableCollection<ViewModelMySql>();
                 }
                 return _SameViewMySqls;
             }
@@ -89,9 +89,25 @@ namespace WPF_UI.ViewModel
         {
             DataSet ds = new DataSet();
 
-            string query = @"";
+            string query =
+                @"SELECT '윤영곤' AS NAME, '30' AS AGE UNION ALL
+                  SELECT '오주석' AS NAME, '30' AS AGE UNION ALL
+                  SELECT '강준모' AS NAME, '30' AS AGE UNION ALL
+                  SELECT '조현우' AS NAME, '32' AS AGE UNION ALL
+                  SELECT '김수민' AS NAME, '31' AS AGE UNION ALL
+                  SELECT '정민우' AS NAME, '29' AS AGE UNION ALL";
 
             SQLDBManager.Instance.ExecuteDsQuery(ds, query);
+
+
+           for(int idx = 0;idx<ds.Tables[0].Rows.Count;idx++)
+            {
+                ViewModelMySql obj = new ViewModelMySql();
+                obj.NAME = ds.Tables[0].Rows[idx]["NAME"].ToString();
+                obj.NAME = ds.Tables[0].Rows[idx]["AGE"].ToString();
+
+                SampleViewMySqls.Add(obj);
+            }
 
         }
 
