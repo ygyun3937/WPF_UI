@@ -85,8 +85,34 @@ namespace WPF_UI.ViewModel
             }
         }
 
+        private ICommand loadedCommand;
+        public ICommand LoadedCommand
+        {
+            get
+            {
+                return (this.loadedCommand) ?? (this.loadedCommand = new DelegateCommand(LoadEvent));
+            }
+
+        }
+
+        private void LoadEvent()
+        {
+            if(SQLDBManager.Instance.GetConnection() == false)
+            {
+                string msg = $"Failed to Connect to Database";
+                MessageBox.Show(msg, "Error");
+            }
+            else
+            {
+                string msg = $"Success to Connect to Database";
+                MessageBox.Show(msg, "Inform");
+            }
+
+        }
+
         private void DataSearch()
         {
+            SampleViewMySqls.Clear();
             DataSet ds = new DataSet();
 
             string query =
@@ -95,7 +121,7 @@ namespace WPF_UI.ViewModel
                   SELECT '강준모' AS NAME, '30' AS AGE UNION ALL
                   SELECT '조현우' AS NAME, '32' AS AGE UNION ALL
                   SELECT '김수민' AS NAME, '31' AS AGE UNION ALL
-                  SELECT '정민우' AS NAME, '29' AS AGE UNION ALL";
+                  SELECT '정민우' AS NAME, '29' AS AGE ";
 
             SQLDBManager.Instance.ExecuteDsQuery(ds, query);
 
@@ -104,7 +130,7 @@ namespace WPF_UI.ViewModel
             {
                 ViewModelMySql obj = new ViewModelMySql();
                 obj.NAME = ds.Tables[0].Rows[idx]["NAME"].ToString();
-                obj.NAME = ds.Tables[0].Rows[idx]["AGE"].ToString();
+                obj.AGE = ds.Tables[0].Rows[idx]["AGE"].ToString();
 
                 SampleViewMySqls.Add(obj);
             }
