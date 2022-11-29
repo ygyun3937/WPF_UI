@@ -234,11 +234,23 @@ namespace WPF_UI.ViewModel
         {
             try
             {
-                SqlDataAdapter cmd = new SqlDataAdapter();
-                cmd.SelectCommand = _SqlCmd;
-                cmd.SelectCommand.Connection = this.Connection;
-                cmd.SelectCommand.CommandText = query;
+                //SqlDataAdapter cmd = new SqlDataAdapter();
+                //cmd.SelectCommand = _SqlCmd;
+                //cmd.SelectCommand.Connection = this.Connection;
+                //cmd.SelectCommand.CommandText = query;
+                //cmd.Fill(ds);
+
+                _SqlCmd.Connection = this.Connection;
+                _SqlCmd.CommandText = query;
+
+                SqlDataAdapter cmd = new SqlDataAdapter(_SqlCmd);
+
+
+                //cmd.SelectCommand.Connection = this.Connection;
+                //cmd.SelectCommand.CommandText = query;
                 cmd.Fill(ds);
+
+                Connection.Close();
             }
             catch (Exception ex)
             {

@@ -116,17 +116,21 @@ namespace WPF_UI.ViewModel
             DataSet ds = new DataSet();
 
             string query =
-                @"SELECT '윤영곤' AS NAME, '30' AS AGE UNION ALL
-                  SELECT '오주석' AS NAME, '30' AS AGE UNION ALL
-                  SELECT '강준모' AS NAME, '30' AS AGE UNION ALL
-                  SELECT '조현우' AS NAME, '32' AS AGE UNION ALL
-                  SELECT '김수민' AS NAME, '31' AS AGE UNION ALL
-                  SELECT '정민우' AS NAME, '29' AS AGE ";
+            "CREATE TABLE test_table(name nchar(20), age int)";
+
+           // SQLDBManager.Instance.ExecuteDsQuery(ds, query);
+            ds = new DataSet();
+            query =
+               string.Format("insert into test_table(NAME,AGE) values('YYG', 30)");
+
+            SQLDBManager.Instance.ExecuteDsQuery(ds, query);
+            ds = new DataSet();
+
+            query = "select NAME,AGE from test_table";
 
             SQLDBManager.Instance.ExecuteDsQuery(ds, query);
 
-
-           for(int idx = 0;idx<ds.Tables[0].Rows.Count;idx++)
+            for (int idx = 0;idx<ds.Tables[0].Rows.Count;idx++)
             {
                 ViewModelMySql obj = new ViewModelMySql();
                 obj.NAME = ds.Tables[0].Rows[idx]["NAME"].ToString();
