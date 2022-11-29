@@ -110,23 +110,32 @@ namespace WPF_UI.ViewModel
 
         }
 
+        private ICommand insertCommand;
+        public ICommand InsertCommand
+        {
+            get
+            {
+                return (this.insertCommand) ?? (this.insertCommand = new DelegateCommand(InsertEvent));
+            }
+
+        }
+
+        private void InsertEvent()
+        {
+            DataSet ds = new DataSet();
+
+            string query = "insert into test_table(NAME,AGE) values('YYG', 30)";
+
+            SQLDBManager.Instance.ExecuteDsQuery(ds, query);
+        }
+
         private void DataSearch()
         {
             SampleViewMySqls.Clear();
+
             DataSet ds = new DataSet();
 
-            string query =
-            "CREATE TABLE test_table(name nchar(20), age int)";
-
-           // SQLDBManager.Instance.ExecuteDsQuery(ds, query);
-            ds = new DataSet();
-            query =
-               string.Format("insert into test_table(NAME,AGE) values('YYG', 30)");
-
-            SQLDBManager.Instance.ExecuteDsQuery(ds, query);
-            ds = new DataSet();
-
-            query = "select NAME,AGE from test_table";
+            string query = "select NAME,AGE from test_table";
 
             SQLDBManager.Instance.ExecuteDsQuery(ds, query);
 
