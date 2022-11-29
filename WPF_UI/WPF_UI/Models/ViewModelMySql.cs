@@ -12,5 +12,17 @@
             get;
             set;
         }
+
+        public string ADD_NAME
+        {
+            get;
+            set;
+        }
+        public string ADD_AGE
+        {
+            get;
+            set;
+        }
+
     }
 }

@@ -40,6 +40,36 @@ namespace WPF_UI.ViewModel
                 OnPropertyChanged("AGE");
             }
         }
+
+        public string ADD_NAME
+        {
+            get
+            {
+                return viewModelMySql.ADD_NAME;
+            }
+            set
+            {
+                viewModelMySql.ADD_NAME = value;
+                OnPropertyChanged("ADD_NAME");
+
+            }
+        }
+
+        public string ADD_AGE
+        {
+            get
+            {
+                return viewModelMySql.ADD_AGE;
+            }
+            set
+            {
+                viewModelMySql.ADD_AGE = value;
+                OnPropertyChanged("ADD_AGE");
+
+            }
+        }
+
+
         ObservableCollection<ViewModelMySql> _SameViewMySqls = null;
         public ObservableCollection<ViewModelMySql> SampleViewMySqls
         {
@@ -109,7 +139,7 @@ namespace WPF_UI.ViewModel
             }
 
         }
-
+        
         private ICommand insertCommand;
         public ICommand InsertCommand
         {
@@ -122,13 +152,48 @@ namespace WPF_UI.ViewModel
 
         private void InsertEvent()
         {
+            DataSet ds = new DataSet();            
+
+            string query = string.Format("insert into test_table(NAME,AGE) values('{0}',{1})",ADD_NAME,ADD_AGE);
+
+            SQLDBManager.Instance.ExecuteDsQuery(ds, query);
+
+            
+            SampleViewMySqls.Clear();
+
+
+            query = "select NAME,AGE from test_table";
+
+            SQLDBManager.Instance.ExecuteDsQuery(ds, query);
+
+            for (int idx = 0; idx < ds.Tables[0].Rows.Count; idx++)
+            {
+                ViewModelMySql obj = new ViewModelMySql();
+                obj.NAME = ds.Tables[0].Rows[idx]["NAME"].ToString();
+                obj.AGE = ds.Tables[0].Rows[idx]["AGE"].ToString();
+
+                SampleViewMySqls.Add(obj);
+            }
+
+        }
+        private ICommand deleteCommand;
+        public ICommand DeleteCommand
+        {
+            get
+            {
+                return (this.deleteCommand) ?? (this.deleteCommand = new DelegateCommand(DeleteEvent));
+            }
+
+        }
+
+        private void DeleteEvent()
+        {
             DataSet ds = new DataSet();
 
-            string query = "insert into test_table(NAME,AGE) values('YYG', 30)";
+            string query = string.Format("delete from test_table");
 
             SQLDBManager.Instance.ExecuteDsQuery(ds, query);
         }
-
         private void DataSearch()
         {
             SampleViewMySqls.Clear();

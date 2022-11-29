@@ -22,7 +22,6 @@ namespace WPF_UI.ViewModel
         public string Address { get; private set; }
         public string Port { get; private set; }
         public string LastException { get; private set; }
-
         /// <summary>
         /// SqlConnection : using System.Data.SqlClient;
         /// </summary>
