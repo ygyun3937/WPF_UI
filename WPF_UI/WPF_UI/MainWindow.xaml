@@ -11,7 +11,7 @@
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable ="d"
         Height="760" Width="1280" ResizeMode="NoResize" AllowsTransparency="True"
-        WindowStyle="None" WindowStartupLocation="CenterScreen" Background="Transparent">
+        WindowStyle="None" WindowStartupLocation="CenterScreen" Background="Transparent" Loaded="Window_Loaded">
 
 
     <i:Interaction.Triggers>
