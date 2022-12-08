@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using WPF_UI.Models;
 using System.Collections.ObjectModel;
-using WPF_UI.Models;
 using System.Windows.Input;
 using System;
 using System.Data;
@@ -15,6 +14,18 @@ namespace WPF_UI.ViewModel
     public class ViewMySql : INotifyPropertyChanged
     {
         ViewModelMySql viewModelMySql = new ViewModelMySql();
+
+        //public ViewMySql(MainWindow mainWindow)
+        //{
+        //     _SameViewMySqls = GetSqlData();
+        //}
+
+        //private ObservableCollection<ViewModelMySql> GetSqlData()
+        //{
+        //    DataSearch();
+
+        //    return _SameViewMySqls;
+        //}
 
         public string NAME
         {
@@ -79,6 +90,7 @@ namespace WPF_UI.ViewModel
                 {
                     _SameViewMySqls = new ObservableCollection<ViewModelMySql>();
                 }
+                //DataSearch();
                 return _SameViewMySqls;
             }
             set

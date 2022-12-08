@@ -14,9 +14,11 @@
         WindowStyle="None" WindowStartupLocation="CenterScreen" Background="Transparent" Loaded="Window_Loaded">
 
 
+    <!--Init UI Function UI 처음 킬때 발생하는 이벤트-->
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedCommand}"/>
+            <i:InvokeCommandAction Command="{Binding SelectCommand}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
 

@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using WPF_UI.ViewModel;
 
 namespace WPF_UI
 {
@@ -12,7 +13,7 @@ namespace WPF_UI
         {
             InitializeComponent();
 
-            
+            //ViewMySql _viewMySql = new ViewMySql(this);
         }
 
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
@@ -26,6 +27,8 @@ namespace WPF_UI
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+
+
             //uiGrid_Main.ItemsSource = ViewModel.ViewMySql.Equals().GEt
         }
     }
