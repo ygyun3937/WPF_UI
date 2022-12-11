@@ -12,6 +12,7 @@
         mc:Ignorable ="d"
         Height="760" Width="1280" ResizeMode="NoResize" AllowsTransparency="True"
         WindowStyle="None" WindowStartupLocation="CenterScreen" Background="Transparent" Loaded="Window_Loaded">
+        <!--Closing="Window_Closing"-->
 
 
     <!--Init UI Function UI 처음 킬때 발생하는 이벤트-->
@@ -49,7 +50,8 @@
                     <StackPanel VerticalAlignment="Top">
                         <!--Ellipses-->
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 30 0 40">
-                            <Ellipse Width="8" Height="8" Fill="#eb1700"/>
+                            <Ellipse Name="Exit" Width="8" Height="8" Fill="#eb1700"
+                                     MouseDown="Exit_MouseDown"/>
                             <Ellipse Width="8" Height="8" Fill="#ffaf01" Margin="7 0"/>
                             <Ellipse Width="8" Height="8" Fill="#009d00"/>
                         </StackPanel>
