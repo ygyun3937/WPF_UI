@@ -36,7 +36,7 @@ namespace WPF_UI
 
         private void Exit_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("Closing called");
+           // MessageBox.Show("Closing called");
 
 
             string msg = "Data is dirty. Close without saving?";
