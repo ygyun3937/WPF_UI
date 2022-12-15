@@ -278,6 +278,13 @@
                         <Button Grid.Row="1" Grid.Column="3" Margin="5"
                                 Content="Connect"
                                 Command="{Binding ConnectCommand}"/>
+                        <ComboBox Grid.Row="2" Grid.Column="0" Margin="5">
+                            <ComboBoxItem Content="Test1" MouseLeftButtonUp="ComboBoxItem_MouseLeftButtonUp"/>
+                            <ComboBoxItem Content="Test2"/>
+                            <ComboBoxItem Content="Test3"/>
+                        </ComboBox>
+                                  
+
                         <Button Grid.Row="2" Grid.Column="1" Margin="5"
                                 Content="Update"
                                 Command="{Binding SelectCommand}"/>

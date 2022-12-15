@@ -74,6 +74,9 @@ namespace WPF_UI
             }
         }
 
-      
+        private void ComboBoxItem_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+
+        }
     }
 }
